@@ -47,7 +47,7 @@ Make sure you have [NPM & NodeJS](https://docs.npmjs.com/downloading-and-install
    ```sh
    git clone https://github.com/XinYang-YXY/cloudsearch-sample-app.git
    ```
-2. Create an environment file at the same folder level as this `README.md file`, name the file as `.env`. You should have the following variables inside your environment file
+2. Create an environment file at the same folder level as this `README.md` file, name the file as `.env`. You should have the following variables inside your environment file
 ```txt
 DB_HOST=<DATABASE_ENDPOINT>
 DB_USER=<DATABASE_USERNAME>

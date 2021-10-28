@@ -47,7 +47,7 @@ Make sure you have [NPM](https://docs.npmjs.com/downloading-and-installing-node-
    ```sh
    git clone https://github.com/XinYang-YXY/cloudsearch-sample-app.git
    ```
-2. Create an environment file at the same folder level as this `README.md file`, name the file as `.env`. You should have the following variables inside your environment file
+2. Create an environment file at the same folder level as this `README.md` file, name the file as `.env`. You should have the following variables inside your environment file
 ```txt
 REACT_APP_BACKEND_API_URL = <YOUR_BACKEND_API_ENDPOINT>
 ```
