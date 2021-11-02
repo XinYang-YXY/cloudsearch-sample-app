@@ -45,9 +45,9 @@ Make sure you have [NPM](https://docs.npmjs.com/downloading-and-installing-node-
 ### Installation
 
 1. Clone the repo
-   ```bash
-   git clone https://github.com/XinYang-YXY/cloudsearch-sample-app.git
-   ```
+```bash
+git clone https://github.com/XinYang-YXY/cloudsearch-sample-app.git
+```
 2. Create an environment file at the same folder level as this `README.md` file, name the file as `.env`. You should have the following variables inside your environment file
 ```txt
 REACT_APP_BACKEND_API_URL = <YOUR_BACKEND_API_ENDPOINT>
@@ -66,7 +66,7 @@ npm build
 ```
 
 ### Docker Details
-By default, the Docker container is listening on port `8080`. You can change it by modifying the `nginx.conf` 
+By default, the Docker container listens on port `8080`. You can change it by modifying the `nginx.conf` 
 
 
 
