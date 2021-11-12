@@ -14,11 +14,11 @@ const pool = mysql.createPool({
   database: process.env.DB_NAME,
 });
 
-app.get("/", async (req, res) => {
+app.get("/api", async (req, res) => {
   res.json({status: "success", message: "Welcome to the CloudSeArch sample app backend!"})
 })
 
-app.post("/subscribe", async (req, res) => {
+app.post("/api/subscribe", async (req, res) => {
   const userEmail = req.body.email;
   const userName = req.body.name;
   const data = {
@@ -37,10 +37,12 @@ app.post("/subscribe", async (req, res) => {
   });
 });
 
-app.get("/subscribe/count", async (req, res) => {
+app.get("/api/subscribe/count", async (req, res) => {
   const query = "SELECT COUNT(*) as totalSubscriber from newsletter.subscriber";
   pool.query(query, [], (error, results) => {
-    if (!results[0]) {
+    if (error){
+      console.log(error);
+    } else if (!results[0]) {
       res.json({ status: "failure" });
     } else {
       const totalSubscriber = results[0].totalSubscriber
@@ -51,7 +53,7 @@ app.get("/subscribe/count", async (req, res) => {
   });
 });
 
-app.put("/subscribe/update", (req, res) => {
+app.put("/api/subscribe/update", (req, res) => {
   const userNewEmail = req.body.newEmail;
   const userOldEmail = req.body.oldEmail;
   const data = {
@@ -74,7 +76,7 @@ app.put("/subscribe/update", (req, res) => {
   });
 });
 
-app.delete("/unsubscribe", (req, res) => {
+app.delete("/api/unsubscribe", (req, res) => {
   const userEmail = req.body.email;
   const query = "DELETE FROM subscriber WHERE email = ?";
   pool.query(query, [userEmail], (error, results) => {
@@ -90,6 +92,6 @@ app.delete("/unsubscribe", (req, res) => {
   });
 });
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8000;
 
 app.listen(PORT, console.log(`Server started on port ${PORT}`));
