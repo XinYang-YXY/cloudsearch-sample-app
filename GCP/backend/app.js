@@ -28,8 +28,6 @@ app.post("/subscribe", async (req, res) => {
     const msg = `[CREATED] ${data.email} - ${data.name}`;
     console.log(msg);
     res.json({ status: "success", data: data });
-
-    res.send(data);
   })
   .catch(err => {
     console.log(err);
@@ -42,8 +40,7 @@ app.get("/subscribe/count", async (req, res) => {
   .then(data => {
     const msg = `[RETRIEVED] ${data}`;
     console.log(msg);
-    res.json(data);
-    res.send(data);
+    res.send(200, data);
   })
   .catch(err => {
     console.log(err);
