@@ -3,7 +3,7 @@ const cors = require('cors')
 const app = express();
 const db = require("./models");
 
-app.use(cors())
+app.use(cors());
 app.use(express.json());
 require('dotenv').config();
 
