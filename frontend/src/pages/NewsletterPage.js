@@ -85,7 +85,7 @@ function NewsletterPage(props) {
     setUnsubscriptionEmail(target.value);
   }
 
-  const backend_api_url = process.env.REACT_APP_BACKEND_API_URL
+  const backend_api_url = process.env.REACT_APP_BACKEND_API_URL;
 
   function create_request() {
     if (userEmail === "" && userName === "") {

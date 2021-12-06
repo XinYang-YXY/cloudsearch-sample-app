@@ -1,16 +1,31 @@
-FROM nginx
+FROM node:14.15.5-alpine3.13 as js-builder
 
-# This Nginx config ensures nginx listens on port 8080. Google App Engine expects
-# the runtime to respond to HTTP requests at port 8080.
-COPY nginx.conf /etc/nginx/nginx.conf
+WORKDIR /usr/src/app/
 
-# create log dir configured in nginx.conf
-RUN mkdir -p /var/log/app_engine
+COPY package.json ./
+COPY public public
+COPY src src
 
-# For App Engine deployment
-RUN mkdir -p /usr/share/nginx/www/_ah && \
-    echo "healthy" > /usr/share/nginx/www/_ah/health
+ENV NODE_ENV production
+ENV REACT_APP_BACKEND_API_URL https://cloudsearch-be.dev.e01.app.gov.sg
+RUN env
 
-# Finally, all static assets.
-ADD ./build  /usr/share/nginx/www/
-RUN chmod -R a+r /usr/share/nginx/www
+# Build assets
+RUN npm i
+RUN npm run build
+
+FROM bitnami/nginx
+
+ENV NODE_ENV production
+
+# Remove keys
+USER 0
+RUN rm /certs/server.key
+USER 1001
+
+COPY nginx.conf /opt/bitnami/nginx/conf/nginx.conf
+
+# All static assets.
+COPY --from=js-builder /usr/src/app/build /app
+
+EXPOSE 8080
