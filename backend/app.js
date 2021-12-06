@@ -3,19 +3,44 @@ const mysql = require("mysql");
 const cors = require('cors')
 const app = express();
 
+// Import the Secret Manager client and instantiate it:
+const {SecretManagerServiceClient} = require('@google-cloud/secret-manager');
+const client = new SecretManagerServiceClient();
+
 app.use(cors())
 app.use(express.json());
 require('dotenv').config()
-const pool = mysql.createPool({
-  // socketPath: `/cloudsql/${process.env.INSTANCE_CONNECTION_NAME}`, # For GCP
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  database: process.env.DB_NAME,
-});
+
+const secretPath = 'projects/593463850334/secrets/db_pass' // Project for which to manage secrets.
+let pool;
+async function databaseConnectionSetUp(){
+  const [version] = await client.accessSecretVersion({
+    name: secretPath + '/versions/1',
+  });
+
+  pool = mysql.createPool({
+    host: process.env.DB_HOST,
+    // socketPath: `/cloudsql/${process.env.INSTANCE_CONNECTION_NAME}`,
+    user: process.env.DB_USER,
+    password: version.payload.data.toString(),
+    database: process.env.DB_NAME,
+  })
+  
+}
+databaseConnectionSetUp()
+
+
+
 
 app.get("/", async (req, res) => {
-  res.json({status: "success", message: "Welcome to the CloudSeArch sample app backend!"})
+  const [secret] = await client.getSecret({
+    name: secretPath,
+  });
+  console.log(process.env.DB_HOST)
+  console.log(process.env.DB_USER)
+  console.log(process.env.DB_NAME)
+
+  res.json({status: "success", message: `Welcome to the CloudSeArch sample app backend!\nFound secret ${secret.name}`})
 })
 
 app.post("/subscribe", async (req, res) => {
