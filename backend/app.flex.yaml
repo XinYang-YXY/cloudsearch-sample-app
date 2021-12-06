@@ -4,9 +4,10 @@ env: flex
 service: backend
 
 env_variables:
-  INSTANCE_CONNECTION_NAME: "serious-case-327004:asia-southeast1:cloudsearch-sample-app"
-  DB_USER: "root"
+  INSTANCE_CONNECTION_NAME: <INSTANCE_CONNECTION_NAME>
+  DB_USER: <DATABASE_USER>
+  DB_PASS: <DATABASE_PASSWORD>
   DB_NAME: "newsletter"
 
 beta_settings:
-  cloud_sql_instances: "serious-case-327004:asia-southeast1:cloudsearch-sample-app"
+  cloud_sql_instances: <INSTANCE_CONNECTION_NAME>
