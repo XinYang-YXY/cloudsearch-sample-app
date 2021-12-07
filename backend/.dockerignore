@@ -1,29 +1,54 @@
+
 node_modules
 cloudRunDeploy.sh
 .env
 .git
-.gitignore# Elastic Beanstalk Files
-.elasticbeanstalk/*
-.git
-.gitignore# Elastic Beanstalk Files
-.elasticbeanstalk/*
-.git
-.gitignore# Elastic Beanstalk Files
-.elasticbeanstalk/*
-.git
-.gitignore# Elastic Beanstalk Files
-.elasticbeanstalk/*
-.git
-.gitignore# Elastic Beanstalk Files
-.elasticbeanstalk/*
-.git
-.gitignore# Elastic Beanstalk Files
-.elasticbeanstalk/*
-.git
-.gitignore# Elastic Beanstalk Files
-.elasticbeanstalk/*
-.git
-.gitignore# Elastic Beanstalk Files
-.elasticbeanstalk/*
-.git
+.gitignore# Elastic Beanstalk Files
+
+.elasticbeanstalk/*
+
+.git
+
+.gitignore# Elastic Beanstalk Files
+
+.elasticbeanstalk/*
+
+.git
+
+.gitignore# Elastic Beanstalk Files
+
+.elasticbeanstalk/*
+
+.git
+
+.gitignore# Elastic Beanstalk Files
+
+.elasticbeanstalk/*
+
+.git
+
+.gitignore# Elastic Beanstalk Files
+
+.elasticbeanstalk/*
+
+.git
+
+.gitignore# Elastic Beanstalk Files
+
+.elasticbeanstalk/*
+
+.git
+
+.gitignore# Elastic Beanstalk Files
+
+.elasticbeanstalk/*
+
+.git
+
+.gitignore# Elastic Beanstalk Files
+
+.elasticbeanstalk/*
+
+.git
+
 .gitignore

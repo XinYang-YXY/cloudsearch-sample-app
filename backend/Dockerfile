@@ -6,8 +6,10 @@ WORKDIR /usr/src/app
 COPY package.json /usr/src/app/
 RUN npm install
 
+RUN touch .env
+
 COPY . /usr/src/app
 
-EXPOSE 8000
+EXPOSE 8080
 
-CMD ["node", "app.js"]
+CMD ["npm", "run", "live"]
