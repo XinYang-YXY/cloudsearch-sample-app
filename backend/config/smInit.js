@@ -1,10 +1,9 @@
 fs = require("fs");
 // Import the Secret Manager client and instantiate it:
-var AWS = require("aws-sdk"),
-	region = "ap-northeast-1",
-	secretName =
-		"arn:aws:secretsmanager:ap-northeast-1:102153735617:secret:cloudsearch/db-iO8jhV",
-	secret;
+var AWS = require('aws-sdk'),
+    region = "ap-southeast-1",
+    secretName = "arn:aws:secretsmanager:ap-southeast-1:102153735617:secret:cloudsearch/db-iO8jhV",
+    secret
 
 // Create a Secrets Manager client
 var client = new AWS.SecretsManager({
@@ -17,7 +16,7 @@ async function smInit() {
 			secret = data.SecretString;
 			//console.log("SecretString retrieved = " + JSON.parse(secret).password) //working
 		}
-		console.log("SecretString retrieved = " + JSON.parse(secret).password); //working
+		// console.log("SecretString retrieved = " + JSON.parse(secret).password); //working
 		let dbPassword = JSON.parse(secret).password;
 		fs.readFile(".env", async (err, data) => {
 			if (err) throw err;
