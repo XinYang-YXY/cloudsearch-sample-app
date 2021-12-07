@@ -7,24 +7,15 @@ app.use(cors());
 app.use(express.json());
 require("dotenv").config();
 
-
-// Import the Secret Manager client and instantiate it:
-const { SecretManagerServiceClient } = require("@google-cloud/secret-manager");
-const client = new SecretManagerServiceClient();
-const secretPath = "projects/593463850334/secrets/db_pass"; // Project for which to manage secrets.
-
-
-
 // Initialize DB configuration with Sequelize
 // https://sequelize.org/
 db.sequelize.sync();
-const Subscribers = db.Subscribers
+const Subscribers = db.subscribers;
 
 app.get("/", async (req, res) => {
-
 	res.json({
 		status: "success",
-		message: 'Welcome to the CloudSeArch sample app backend!',
+		message: "Welcome to the CloudSeArch sample app backend!",
 	});
 });
 
