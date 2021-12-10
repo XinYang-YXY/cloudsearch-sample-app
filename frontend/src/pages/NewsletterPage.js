@@ -361,7 +361,7 @@ function NewsletterPage(props) {
             leftIcon={<ImCancelCircle />}
             onClick={onDeleteOpen}
           >
-            Unsubscription
+            Unsubscribe
           </Button>
         </Box>
       </Box>
